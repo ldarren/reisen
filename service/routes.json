@@ -1,0 +1,8 @@
+{
+	"routes": {
+		"/1.0/ping": [
+			[["web.output", "text/plain", "text"], "_.res", "hello"],
+			["util.wait", 5]
+		]
+	}
+}
