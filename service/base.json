@@ -19,5 +19,11 @@
 	},{
 		"id": "timer",
 		"mod": "@timer"
+	},{
+		"id": "ps",
+		"mod": "planetscale",
+		"host": "",
+		"username": "",
+		"password": ""
 	}]
 }

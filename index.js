@@ -9,7 +9,6 @@ const opt = args.parse({
 	ratelimit: [64, 'ratelimit'],
 	r: '@ratelimit'
 })
-picos(opt, (err) => {
+picos(opt, err => {
 	if (err) throw err
 })
-
