@@ -5,17 +5,19 @@ function PlanetScale(connect, cfg){
 }
 
 PlanetScale.prototype = {
+	async get(){
+		const results = await this.conn.execute('select 1 from dual where 1=?', [1])
+		console.log(results)
+	},
+	async set(){
+	}
 }
 
 module.exports = {
 	async setup(host, cfg, rsc, paths){
 		const {connect} = await promise
-		return PlanetScale(connect, cfg)
+		const ps = new PlanetScale(connect, cfg)
+		await ps.get()
+		return ps
 	},
-	async get(){
-		const results = await conn.execute('select 1 from dual where 1=?', [1])
-		console.log(results)
-	},
-	async set(){
-	}
 }

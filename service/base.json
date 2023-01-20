@@ -1,29 +1,30 @@
 {
-	"mod": [{
-		"id": "web",
-		"mod": "@web",
-		"host": "0.0.0.0",
-		"port": 1337
-	},{
-		"id":"sse",
-		"mod": "@sse"
-	},{
-		"id": "auth",
-		"mod": "@basicAuth"
-	},{
-		"id": "sys",
-		"mod": "@sys"
-	},{
-		"id": "util",
-		"mod": "util"
-	},{
-		"id": "timer",
-		"mod": "@timer"
-	},{
-		"id": "ps",
-		"mod": "planetscale",
-		"host": "",
-		"username": "",
-		"password": ""
-	}]
+	"mod": {
+		"web": {
+			"mod": "@web",
+			"host": "0.0.0.0",
+			"port": 1337
+		},
+		"sse": {
+			"mod": "@sse"
+		},
+		"auth": {
+			"mod": "@basicAuth"
+		},
+		"sys": {
+			"mod": "@sys"
+		},
+		"util":{
+			"mod": "util"
+		},
+		"timer": {
+			"mod": "@timer"
+		},
+		"ps": {
+			"mod": "planetscale",
+			"host": "{from env.json}",
+			"username": "{from env.json}",
+			"password": "{from env.json}"
+		}
+	}
 }
