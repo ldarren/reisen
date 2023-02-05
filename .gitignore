@@ -1,2 +1,2 @@
 node_modules/
-service/env.*.json
+api/service/env.*.json
