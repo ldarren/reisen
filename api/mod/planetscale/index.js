@@ -1,5 +1,5 @@
 const promise = import('@planetscale/database')
-const QB = require('./QueryBuilder')
+const QueryBuilder = require('./QueryBuilder')
 
 function PlanetScale(connect, cfg){
 	this.conn = connect(cfg)
@@ -11,7 +11,8 @@ PlanetScale.prototype = {
 		console.log(results)
 	},
 	query(){
-		const qb = new QueryBuilder()
+		const qb = new QueryBuilder('', 'tour', 'master')
+		return qb
 	}
 }
 
