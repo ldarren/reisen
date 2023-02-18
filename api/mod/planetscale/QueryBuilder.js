@@ -11,7 +11,7 @@ function extractConditions(index, conds, params, joint){
 	if (Array.isArray(c[0])) return '(' + extractConditions(index, c, params, 'and') + ')'
 
 	if (index && !index.includes(c[0])) return extractConditions(index, conds, params, joint)
-	str += `\`${c[0]}\` ${c[1]} `
+	str += c[0].charAt ? `\`${c[0]}\` ${c[1]} ` : `${c[0]} ${c[1]}`
 	params.push(c[2])
 	if (Array.isArray(c[2])){
 		str += '(?)'
@@ -22,12 +22,12 @@ function extractConditions(index, conds, params, joint){
 	return str + extractConditions(index, conds, params, joint)
 }
 
-function QueryBuilder(cluster, tname, pname){
-	this.cluster = cluster
+function QueryBuilder(tname, cb){
 	this.tname = tname
-	this.pname = pname
+	this.pname = '*'
 	this.op = 'select'
 	this.cond = []
+	this.cb = cb
 }
 
 QueryBuilder.prototype = {
@@ -182,12 +182,10 @@ QueryBuilder.prototype = {
 		sql += ';'
 		return cb(err, sql, params)
 	},
-	exec(cb){
-		this.toSQL((err, sql, params) => {
-			if (err) return cb(err)
-			const pool = this.cluster.of(this.pname)
-			if (!pool) return cb(`invalid pool name ${this.pname}`)
-			pool.query(sql, params, cb)
+	async exec(){
+		return await this.toSQL(async (err, sql, params) => {
+			if (err) return this.cb(err)
+			return await this.cb(null, sql, params, this.pname)
 		})
 	}
 }

@@ -6,12 +6,11 @@ function PlanetScale(connect, cfg){
 }
 
 PlanetScale.prototype = {
-	async get(){
-		const results = await this.conn.execute('select 1 from dual where 1=?', [1])
-		console.log(results)
-	},
-	query(){
-		const qb = new QueryBuilder('', 'tour', 'master')
+	query(tname){
+		const qb = new QueryBuilder(tname, (err, sql, params, pool) => {
+			if (err) return console.error(err)
+			return this.conn.execute(sql, params)
+		})
 		return qb
 	}
 }
@@ -20,8 +19,8 @@ module.exports = {
 	async setup(host, cfg, rsc, paths){
 		const {connect} = await promise
 		const ps = new PlanetScale(connect, cfg)
-		await ps.get()
-		await ps.query().select().exec()
+		const result = await ps.query('dual').select(1).where(1, 1).exec()
+		console.log(result)
 		return ps
 	},
 }
