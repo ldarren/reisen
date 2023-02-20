@@ -1,6 +1,6 @@
 {
   "name": "reisen",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "iitinerary planner",
   "main": "index.js",
   "scripts": {
@@ -16,8 +16,8 @@
   "dependencies": {
     "@planetscale/database": "^1.5.0",
     "pico-args": "^1.0.14",
-    "pico-common": "^0.14.31",
-    "picos": "^0.10.2",
-    "picos-util": "^0.2.6"
+    "pico-common": "^0.15.1",
+    "picos": "^0.10.3",
+    "picos-util": "^0.2.7"
   }
 }

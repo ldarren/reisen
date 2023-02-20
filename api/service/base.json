@@ -22,9 +22,9 @@
 		},
 		"ps": {
 			"mod": "planetscale",
-			"host": "{from env.json}",
-			"username": "{from env.json}",
-			"password": "{from env.json}"
+			"host": "$mod_ps_host",
+			"username": "$mod_ps_username",
+			"password": "$mod_ps_password"
 		}
 	}
 }
