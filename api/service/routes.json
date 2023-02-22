@@ -1,8 +1,11 @@
 {
 	"routes": {
 		"/1.0/ping": [
-			[["web.output", "text/plain", "text"], "_.res", "hello"],
-			["util.wait", 5]
+			[["web.output", "text/plain", "text"], "_.res", "pong"]
+		],
+		"/1.0/:user/cal": [
+			["util.getCal", "ical", "_"],
+			[["web.output", "text/plain", "text"], "_.res", "_.ical"]
 		]
 	}
 }
