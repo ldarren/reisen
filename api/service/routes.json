@@ -6,6 +6,10 @@
 		"/1.0/:user/cal": [
 			["util.getCal", "ical", "_"],
 			[["web.output", "text/plain", "text"], "_.res", "_.ical"]
+		],
+		"/1.0/:user/events": [
+			["@.evt.read", "_.:output"],
+			[["web.output"], "_.res", "_.:output"]
 		]
 	}
 }

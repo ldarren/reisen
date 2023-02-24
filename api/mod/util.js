@@ -44,6 +44,7 @@ module.exports = {
 	},
 
 	getCal(key, output){
+	console.log('####', output)
 		output[key] = cal
 		return this.next()
 	}

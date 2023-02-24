@@ -1,0 +1,86 @@
+{
+	"rsc": {
+		"Event": {
+			"db": "tour",
+			"schema": {
+				"type": "obj",
+				"spec": {
+					"name": {
+						"type": "str",
+						"required": 1,
+						"gt": 0,
+						"lt": 255
+					},
+					"desc": {
+						"type": "str",
+						"required": 1
+					},
+					"img": {
+						"type": "str",
+						"gt": 0,
+						"lt": 255
+					},
+					"duration": {
+						"type": "num",
+						"required": 1
+					},
+					"rate": "num",
+					"contact": {
+						"type": "obj",
+						"required": 1,
+						"spec": {
+							"loc": {
+								"type": "str",
+								"required": 1
+							},
+							"seq": {
+								"type": "num",
+								"value": 1
+							},
+							"alarm": {
+								"type": "obj",
+								"spec": {
+									"tgr": {
+										"type": "str",
+										"required": 1
+									},
+									"desc": {
+										"type": "str",
+										"required": 1
+									},
+									"act": {
+										"type": "str",
+										"value": "display"
+									}
+								}
+							}
+						}
+					},
+					"i": "num",
+					"t": {
+						"type": "num",
+						"required": 1,
+						"value": 1
+					},
+					"s": {
+						"type": "num",
+						"required": 1
+					},
+					"cby": {
+						"type": "num",
+						"required": 1
+					},
+					"cat": {
+						"type": "date",
+						"required": 1
+					},
+					"uby": "num",
+					"uat": {
+						"type": "date",
+						"required": 1
+					}
+				}
+			}
+		}
+	}
+}
