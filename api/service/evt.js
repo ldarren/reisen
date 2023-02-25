@@ -8,17 +8,27 @@ return {
 	},
 	create(rows, key, data){
 		const cal = icalgen({name: this.params.user})
-		const startTime = new Date()
-		const endTime = new Date()
-		endTime.setHours(startTime.getHours()+1)
-		cal.createEvent({
-			start: startTime,
-			end: endTime,
-			summary: 'Example Event',
-			description: 'It works )',
-			location: 'my room',
-			url: 'http://sebbo.net/'
-		})
+
+		for (let i = 0, l = rows.length, row; i < l; i++){
+			row = rows[i]
+			const startTime = new Date(row.cat)
+			const endTime = new Date(startTime.getTime())
+			endTime.setHours(startTime.getHours()+1)
+			const evt = cal.createEvent({
+				start: startTime,
+				end: endTime,
+				summary: row.name,
+				description: row.desc,
+				location: row.contact.loc,
+				url: row.contact.url || ''
+			})
+			const a = row.contact.alarm
+			evt.createAlarm({
+				triggerAfter: -1 * 60 * 10,
+				description: a.desc,
+				type: a.act
+			})
+		}
 		data[key] = cal.toString()
 		return this.next()
 	},

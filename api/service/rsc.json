@@ -15,43 +15,53 @@
 						"type": "str",
 						"required": 1
 					},
-					"img": {
-						"type": "str",
-						"gt": 0,
-						"lt": 255
-					},
 					"duration": {
 						"type": "num",
 						"required": 1
 					},
 					"rate": "num",
-					"contact": {
-						"type": "obj",
+					"loc": {
+						"type": "str",
+						"required": 1
+					},
+					"seq": {
+						"type": "num",
+						"value": 1
+					},
+					"attach": {
+						"type": "arr",
+						"spec": {
+							"type": "str",
+							"gt": 0,
+							"lt": 255
+						}
+					},
+					"cat": {
+						"type": "arr",
+						"spec": {
+							"type": "obj",
+							"spec": {
+								"name": ["APPOINTMENT", "MEETING"]
+							}
+						}
+					},
+					"alarms": {
+						"type": "arr",
 						"required": 1,
 						"spec": {
-							"loc": {
-								"type": "str",
-								"required": 1
-							},
-							"seq": {
-								"type": "num",
-								"value": 1
-							},
-							"alarm": {
-								"type": "obj",
-								"spec": {
-									"tgr": {
-										"type": "str",
-										"required": 1
-									},
-									"desc": {
-										"type": "str",
-										"required": 1
-									},
-									"act": {
-										"type": "str",
-										"value": "display"
-									}
+							"type": "obj",
+							"spec": {
+								"after": {
+									"type": "num",
+									"required": 1
+								},
+								"desc": {
+									"type": "str",
+									"required": 1
+								},
+								"act": {
+									"type": "str",
+									"value": "display"
 								}
 							}
 						}
