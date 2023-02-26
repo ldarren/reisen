@@ -5,67 +5,213 @@
 			"schema": {
 				"type": "obj",
 				"spec": {
-					"name": {
+					"start": "date",
+					"statue": ["CANCELLED", "CONFIRMED", "TENTATIVE"],
+					"summary": {
 						"type": "str",
-						"required": 1,
+						"value": "",
 						"gt": 0,
 						"lt": 255
 					},
-					"desc": {
-						"type": "str",
-						"required": 1
+					"description": {
+						"type": "obj",
+						"required": 1,
+						"spec": {
+							"plain": "str",
+							"html": "str"
+						}
 					},
-					"duration": {
-						"type": "num",
-						"required": 1
+					"duration": "num",
+
+					"meta": {
+						"type": "obj",
+						"spec": {
+							"allDay": "bool",
+							"busystatus": ["BUSY", "FREE", "OOF", "TENTATIVE"],
+							"end": "date",
+							"floating": "bool",
+							"id": "str",
+							"location": {
+								"type": "obj",
+								"spec": {
+									"title": {
+										"type": "str",
+										"required": 1
+									},
+									"address": "str",
+									"geo": {
+										"type": "obj",
+										"spec": {
+											"lat": "num",
+											"lon": "num"
+										}
+									},
+									"radius": "num"
+								}
+							},
+							"organizer": {
+								"type": "obj",
+								"spec": {
+									"name": {
+										"type": "str",
+										"required": 1
+									},
+									"email": "str",
+									"mailto": "str",
+									"sentBy": "str"
+								}
+							},
+							"priority": {
+								"type": "num",
+								"gt": -1,
+								"lt": 10
+							},
+							"recurrenceId": "date",
+							"repeating": {
+								"type": "obj",
+								"spec": {
+									"byDay": ["FR", "MO", "SA", "SU", "TH", "TU", "WE"],
+									"byMonth": {
+										"type": "arr",
+										"spec": {
+											"type": "num",
+											"lt": 13
+										}
+									},
+									"byMonthDay": {
+										"type": "arr",
+										"spec": {
+											"type": "num",
+											"lt": 32
+										}
+									},
+									"bySetPos": {
+										"type": "arr",
+										"spec": "num"
+									},
+									"count": "num",
+									"exclude": {
+										"type": "arr",
+										"spec": "date"
+									},
+									"exclude": ["DAILY", "HOURLY", "MINUTELY", "MONTHLY", "SECONDLY", "WEEKLY", "YEARLY"],
+									"interval": "num",
+									"startOfWeek": ["FR", "MO", "SA", "SU", "TH", "TU", "WE"],
+									"until": "date",
+									"excludeTimezone": "str"
+								}
+							},
+							"sequence": {
+								"type": "num",
+								"value": 1
+							},
+							"stamp": "date",
+							"timezone": "str",
+							"transparency": ["OPAQUE", "TRANSPARENT"],
+							"url": "str",
+							"x": {
+								"type": "arr",
+								"spec": {
+									"type": "obj",
+									"spec": {
+										"key": {
+											"type": "str",
+											"required": 1
+										},
+										"value": {
+											"type": "str",
+											"required": 1
+										}
+									}
+								}
+							}
+						}
 					},
-					"rate": "num",
-					"loc": {
-						"type": "str",
-						"required": 1
-					},
-					"seq": {
-						"type": "num",
-						"value": 1
-					},
-					"attach": {
+
+					"attachments": {
 						"type": "arr",
 						"spec": {
 							"type": "str",
-							"gt": 0,
-							"lt": 255
+							"required": 1
 						}
 					},
-					"cat": {
+					"attendees": {
 						"type": "arr",
 						"spec": {
 							"type": "obj",
 							"spec": {
-								"name": ["APPOINTMENT", "MEETING"]
+								"email": {
+									"type": "str",
+									"required": 1
+								},
+								"name": {
+									"type": "str",
+									"required": 1
+								}
 							}
 						}
 					},
 					"alarms": {
 						"type": "arr",
-						"required": 1,
 						"spec": {
 							"type": "obj",
 							"spec": {
-								"after": {
+								"attach": {
+									"type": "obj",
+									"spec": {
+										"uri": {
+											"type": "str",
+											"required": 1
+										},
+										"mime": "str"
+									}
+								},
+								"description": "str",
+								"interval": {
+									"type": "num",
+									"required": ["bool", "repeat"]
+								},
+								"repeat": {
+									"type": "num",
+									"required": ["bool", "interval"]
+								},
+								"trigger": {
 									"type": "num",
 									"required": 1
 								},
-								"desc": {
-									"type": "str",
-									"required": 1
-								},
-								"act": {
-									"type": "str",
-									"value": "display"
+								"type": ["audio", "display"],
+								"x": {
+									"type": "arr",
+									"spec": {
+										"type": "obj",
+										"spec": {
+											"key": {
+												"type": "str",
+												"required": 1
+											},
+											"value": {
+												"type": "str",
+												"required": 1
+											}
+										}
+									}
 								}
 							}
 						}
 					},
+					"categories": {
+						"type": "arr",
+						"spec": {
+							"type": "obj",
+							"spec": {
+								"name": {
+									"type": "str",
+									"required": 1
+								}
+							}
+						}
+					},
+					"class": ["CONFIDENTIAL", "PRIVATE", "PUBLIC"],
 					"i": "num",
 					"t": {
 						"type": "num",
@@ -82,12 +228,14 @@
 					},
 					"cat": {
 						"type": "date",
+						"alias": "created",
 						"required": 1
 					},
 					"uby": "num",
 					"uat": {
 						"type": "date",
-						"required": 1
+						"required": 1,
+						"alias": "lastModified"
 					}
 				}
 			}
