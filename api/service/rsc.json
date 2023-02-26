@@ -1,12 +1,12 @@
 {
 	"rsc": {
-		"Event": {
+		"event": {
 			"db": "tour",
 			"schema": {
 				"type": "obj",
 				"spec": {
+					"id": "str",
 					"start": "date",
-					"statue": ["CANCELLED", "CONFIRMED", "TENTATIVE"],
 					"summary": {
 						"type": "str",
 						"value": "",
@@ -21,6 +21,29 @@
 							"html": "str"
 						}
 					},
+					"location": {
+						"type": "obj",
+						"spec": {
+							"title": {
+								"type": "str",
+								"required": 1
+							},
+							"address": "str",
+							"geo": {
+								"type": "obj",
+								"spec": {
+									"lat": "num",
+									"lon": "num"
+								}
+							},
+							"radius": "num"
+						}
+					},
+					"sequence": {
+						"type": "num",
+						"value": 1
+					},
+					"url": "str",
 					"duration": "num",
 
 					"meta": {
@@ -28,27 +51,9 @@
 						"spec": {
 							"allDay": "bool",
 							"busystatus": ["BUSY", "FREE", "OOF", "TENTATIVE"],
+							"class": ["CONFIDENTIAL", "PRIVATE", "PUBLIC"],
 							"end": "date",
 							"floating": "bool",
-							"id": "str",
-							"location": {
-								"type": "obj",
-								"spec": {
-									"title": {
-										"type": "str",
-										"required": 1
-									},
-									"address": "str",
-									"geo": {
-										"type": "obj",
-										"spec": {
-											"lat": "num",
-											"lon": "num"
-										}
-									},
-									"radius": "num"
-								}
-							},
 							"organizer": {
 								"type": "obj",
 								"spec": {
@@ -101,14 +106,10 @@
 									"excludeTimezone": "str"
 								}
 							},
-							"sequence": {
-								"type": "num",
-								"value": 1
-							},
 							"stamp": "date",
+							"statue": ["CANCELLED", "CONFIRMED", "TENTATIVE"],
 							"timezone": "str",
 							"transparency": ["OPAQUE", "TRANSPARENT"],
-							"url": "str",
 							"x": {
 								"type": "arr",
 								"spec": {
@@ -211,13 +212,7 @@
 							}
 						}
 					},
-					"class": ["CONFIDENTIAL", "PRIVATE", "PUBLIC"],
 					"i": "num",
-					"t": {
-						"type": "num",
-						"required": 1,
-						"value": 1
-					},
 					"s": {
 						"type": "num",
 						"required": 1
