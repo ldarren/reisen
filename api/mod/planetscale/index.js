@@ -1,13 +1,20 @@
 const promise = import('@planetscale/database')
 const QueryBuilder = require('./QueryBuilder')
 
-function PlanetScale(connect, cfg){
-	this.conn = connect(cfg)
+function Table(conn, name, schema){
+	this.conn = conn
+	this.name = name
+	this.schema = schema
 }
 
-PlanetScale.prototype = {
-	query(tname){
-		const qb = new QueryBuilder(tname, (err, sql, params, pool) => {
+Table.prototype = {
+	/*
+	 * ExampleL select * from event where s = 1;
+	 * const result = await table.query().where('s', 1).exec()
+	 * console.log(result)
+	 */
+	query(){
+		const qb = new QueryBuilder(this.name, (err, sql, params, pool) => {
 			if (err) return console.error(err)
 			return this.conn.execute(sql, params)
 		})
@@ -18,9 +25,14 @@ PlanetScale.prototype = {
 module.exports = {
 	async setup(host, cfg, rsc, paths){
 		const {connect} = await promise
-		const ps = new PlanetScale(connect, cfg)
-		const result = await ps.query('dual').select(1).where(1, 1).exec()
-		console.log(result)
-		return ps
+		const conn = connect(cfg)
+		var db = Object.keys(rsc).reduce((acc, name) => {
+			const rs = rsc[name]
+			if (!rs || cfg.db !== rs.db) return acc
+			const table = new Table(conn, name, rs)
+			acc[name] = table
+			return acc
+		}, {})
+		return db
 	},
 }

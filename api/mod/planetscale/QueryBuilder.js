@@ -1,4 +1,5 @@
 const util = require('./util')
+const ANY = '*'
 
 function extractConditions(index, conds, params, joint){
 	let str = ''
@@ -24,27 +25,28 @@ function extractConditions(index, conds, params, joint){
 
 function QueryBuilder(tname, cb){
 	this.tname = tname
-	this.pname = '*'
+	this.pname = ANY
 	this.op = 'select'
 	this.cond = []
+	this.ret = []
 	this.cb = cb
 }
 
 QueryBuilder.prototype = {
 	select(){
 		this.op = 'select'
-		if (!this.pname) this.pname = '*'
+		this.pname = this.pname || ANY
 
 		if (arguments.length) {
 			if (1 === arguments.length){
 				const arg = arguments[0]
-				if (Array.isArray(arg)) this.ret = arg
-				else this.ret = [arg]
+				if (Array.isArray(arg)) this.ret.push(...arg)
+				else this.ret.push(arg)
 			}else{
-				this.ret = Array.from(arguments)
+				this.ret.push(...Array.from(arguments))
 			}
 		}else{
-			this.ret = ['*']
+			this.ret = [ANY]
 		}
 		return this
 	},
@@ -134,7 +136,8 @@ QueryBuilder.prototype = {
 
 		switch(this.op){
 		case 'select':
-			if (!this.ret || !Array.isArray(this.cond)) return 'missing return or conditions'
+			if (!this.ret.length) this.ret.push(ANY)
+			if (!Array.isArray(this.cond) || !this.cond.length) return 'missing conditions'
 			return
 		case 'insert':
 			if (!this.tname || !this.fields || !this.values) return 'missing table name or fields or values'
@@ -191,3 +194,9 @@ QueryBuilder.prototype = {
 }
 
 module.exports = QueryBuilder
+
+/**
+ * future test cases
+ * - select is the default op
+ * - no select given equal select all
+ */
