@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<title>Reisen - Calendar</title>
+
+<link href="./main.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<div class="demo-topbar">Drag the prefab event to the calendar</div>
+
+<div id="external-events">
+	<p><strong>Prefab Events</strong></p>
+
+	<div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+		<div class="fc-event-main">My Event 1</div>
+	</div>
+	<div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+		<div class="fc-event-main">My Event 2</div>
+	</div>
+	<div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+		<div class="fc-event-main">My Event 3</div>
+	</div>
+	<div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+		<div class="fc-event-main">My Event 4</div>
+	</div>
+	<div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event">
+		<div class="fc-event-main">My Event 5</div>
+	</div>
+
+	<p>
+		<input type="checkbox" id="drop-remove" />
+		<label for="drop-remove">remove after drop</label>
+	</p>
+</div>
+<!--https://www.litmus.com/blog/how-to-create-an-add-to-calendar-link-for-your-emails/--!>
+<!--https://interactiondesignfoundation.github.io/add-event-to-calendar-docs/-->
+<!--https://ical.marudot.com/#-->
+<!--https://www.labnol.org/calendar/-->
+<a href=http://www.google.com/calendar/render?cid=webcal://reisen-api-dev.onrender.com/1.0/deepak/events>Add to Google Calendar</a>
+<a rel="noopener" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220112T180000Z%2F20220112T200000Z&details=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&location=New%20Earth&text=Welcome%20to%20the%20Motorway" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Google Calendar</span></a>
+
+<a rel="noopener" target="_blank" href="https://outlook.office.com/calendar/0/deeplink/compose?body=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&enddt=2022-01-12T20%3A00%3A00%2B00%3A00&location=New%20Earth&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2022-01-12T18%3A00%3A00%2B00%3A00&subject=Welcome%20to%20the%20Motorway" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Outlook Calendar</span></a>
+
+<a rel="noopener" target="_blank" href="https://calendar.aol.com/?desc=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&dur=&et=20220112T190000Z&in_loc=New%20Earth&st=20220112T170000Z&title=Welcome%20to%20the%20Motorway&v=60" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your AOL Calendar</span></a>&nbsp;&nbsp;
+
+<a rel="noopener" target="_blank" href="https://calendar.yahoo.com/?desc=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&dur=&et=20220112T190000Z&in_loc=New%20Earth&st=20220112T170000Z&title=Welcome%20to%20the%20Motorway&v=60" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Yahoo Calendar</span></a>
+
+
+<div id="calendar-container">
+	<div id="calendar"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.1/index.global.min.js"></script>
+<script src="./index.js"></script>
+
+</body>
+</html>
