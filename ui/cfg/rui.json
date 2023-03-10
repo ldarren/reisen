@@ -1,0 +1,14 @@
+[
+	["models", "type", "ext/Collection", [
+		"data", 1, "options"
+	]],
+	["p/View", "view", [
+		["options", "map", {"el": ".__", "content":"A hello from 'rui'!"}],
+		["events", "models", [
+			["options", "map", {
+				"idAttr": "i"
+			}],
+			["env", "ref", "be"]
+		], "events"]
+	]]
+]
