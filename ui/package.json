@@ -1,6 +1,6 @@
 {
   "name": "reisen-ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "reisen the better way to add events to your website",
   "main": "index.js",
   "scripts": {

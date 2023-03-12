@@ -4,6 +4,6 @@ return {
 		model: 'model'	
 	},
 	create(deps, params){
-		this.el = deps.tmpl({d:deps.model})
+		this.el.innerHTML = deps.tmpl(deps.model)
 	}
 }

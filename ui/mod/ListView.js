@@ -1,11 +1,11 @@
 return {
 	deps: {
 		list: 'models',
-		Item: 'View'
+		Item: 'view'
 	},
 	create(deps, params){
 		deps.list.forEach((model, i) => {
-			this.spawn(deps.Item, {i})
+			this.spawn(deps.Item, {i: i+1})
 		})
 	}
 }
