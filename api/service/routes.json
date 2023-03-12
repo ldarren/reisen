@@ -3,14 +3,19 @@
 		"/1.0/ping": [
 			[["web.output", "text/plain", "text"], "_.res", "pong"]
 		],
-		"/1.0/:user/cal": [
-			["util.getCal", "ical", "_"],
-			[["web.output", "text/plain", "text"], "_.res", "_.ical"]
-		],
 		"/1.0/:user/events": [
 			["@.evt.read", "_.:rows"],
+			[["util.branchByContentType", {
+				"text/calendar": "events/ical",
+				"application/json": "events/json"
+			}, "text/calendar"], "_.req"]
+		],
+		"events/ical": [
 			["@.evt.create", "_.:rows", "ical", "_"],
-			[["web.output", "text/plain", "text"], "_.res", "_.ical"]
+			[["web.output", "text/calendar", "text"], "_.res", "_.ical"]
+		],
+		"events/json": [
+			[["web.output"], "_.res", "_.:rows"]
 		]
 	}
 }
