@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "build:prod": "cp ./rui.prod.json bin/rui/ && pico-client-build --bundle rui --env prod"
+    "build:prod": "cp ./rui.prod.json cfg/ && pico-client-build --bundle rui --env prod"
   },
   "repository": {
     "type": "git",
