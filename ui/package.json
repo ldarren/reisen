@@ -23,7 +23,7 @@
   "homepage": "https://github.com/ldarren/reisen#readme",
   "dependencies": {
     "pico-args": "^1.0.*",
-    "pico-client": "^0.7.*",
+    "pico-client": "^0.8.*",
     "pico-common": "^0.15.*"
   }
 }
