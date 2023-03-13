@@ -1,4 +1,5 @@
 const ACCEPT = 'accept'
+
 module.exports = {
 	setup(host, cfg, rsc, paths){
 		return this
