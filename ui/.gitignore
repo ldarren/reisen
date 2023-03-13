@@ -1,2 +1,2 @@
-bin/
-cfg/*.dev.json
+bin/rui/
+cfg/rui.*.json
