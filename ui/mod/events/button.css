@@ -1,0 +1,16 @@
+.btn-yellow{
+	background-color: #F4D66C;
+	font-size: 18px;
+	font-family: Helvetica, Arial,sans-serif;
+	font-weight:bold;
+	text-decoration: none;
+	padding: 14px 20px;
+	color: #1D2025;
+	border-radius: 5px;
+	display:inline-block;
+	mso-padding-alt:0;
+	box-shadow:0 3px 6px rgba(0,0,0,.2);
+}
+.btn-yellow span{
+	mso-text-raise:15pt;
+}

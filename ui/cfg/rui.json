@@ -1,0 +1,33 @@
+[
+	["models", "type", "po/Collection", [
+		"data", 1, "options"
+	]],
+	["p/View", "view", [
+		["options", "map", {"el": ".__", "content":"A hello from 'rui'!"}],
+		["be", "ref", "be"],
+		["events", "models", [
+			["options", "map", {
+				"idAttr": "i"
+			}],
+			["env", "ref", "be"]
+		], "events/coll"],
+		["ListView", "view", [
+			["options", "map", {"tag": "ul"}],
+			["list", "ref", "events"],
+			["Item", "view", [
+				["options", "map", {"tag": "li"}],
+				["tmpl", "file", "events/tmpl.asp"],
+				["model", "model", "list", "i"]
+			], "events/View"]
+		]],
+		["p/View", "view", [
+			["options", "map", {
+				"tag": "a", "rel": "noopener", "target": "_blank", "class": "cta btn-yellow",
+				"content": [
+					{"tag": "span", "content": "Add to your Google Calendar"}
+				]
+			}],
+			["css", "file", "events/button.css"]
+		], "events/ButtonSync"]
+	]]
+]

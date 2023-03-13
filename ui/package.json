@@ -1,0 +1,27 @@
+{
+  "name": "reisen-ui",
+  "version": "0.0.4",
+  "description": "reisen the better way to add events to your website",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ldarren/reisen.git"
+  },
+  "keywords": [
+    "events",
+    "itinerary"
+  ],
+  "author": "Darren Liew",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ldarren/reisen/issues"
+  },
+  "homepage": "https://github.com/ldarren/reisen#readme",
+  "dependencies": {
+    "pico-args": "^1.0.14",
+    "pico-client": "^0.7.8"
+  }
+}
