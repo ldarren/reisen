@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-	"build:prod": "cp rui.prod.json cfg/ && pico-client-build --bundle rui --env prod"
+    "build:prod": "cp rui.prod.json cfg/ && pico-client-build --bundle rui --env prod"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/ldarren/reisen#readme",
   "dependencies": {
-    "pico-args": "^1.0.14",
-    "pico-client": "^0.7.8"
+    "pico-args": "^1.0.*",
+    "pico-client": "^0.7.*",
+    "pico-common": "^0.15.*"
   }
 }
