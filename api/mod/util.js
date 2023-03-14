@@ -12,10 +12,11 @@ module.exports = {
 	},
 
 	handleOption(req, res){
-	console.log(req.method)
 		if ('OPTIONS' === req.method){
 			res.writeHead(204, CORS_HEADERS)
 			res.end()
+	console.log(req.method)
+			return
 		}
 		return this.next()
 	},
