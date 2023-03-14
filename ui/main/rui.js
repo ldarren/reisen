@@ -26,16 +26,14 @@ pico.run({
 	var specMgr= require('p/specMgr')
 	var View= require('p/View')
 	var project = require('cfg/rui.json')
+	var env = require('cfg/rui.env.json')
 	var main
 
 	return function(){
 		specMgr.load(null, null, project, function(err, spec){
 			if (err) return console.error(err)
-			require('cfg/rui.'+ pico.env('build') +'.json', (err, host) => {
-				if (err) return console.error(err)
-				main = new View('_host', host, null, [])
-				main.spawnBySpec(spec)
-			})
+			main = new View('_host', env, null, [])
+			main.spawnBySpec(spec)
 		})
 	}
 })

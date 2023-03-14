@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "build:prod": "cp ./rui.prod.json cfg/ && pico-client-build --bundle rui --env prod"
+    "build:prod": "cp ./rui.env.json cfg/ && pico-client-build --bundle rui --env prod"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "dependencies": {
     "lean-wrap": "^0.3.*",
     "pico-args": "^1.0.*",
-    "pico-client": "0.7.11",
+    "pico-client": "0.8.*",
     "pico-common": "^0.15.*"
   }
 }
