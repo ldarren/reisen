@@ -4,6 +4,7 @@
 			[["web.output", "text/plain", "text"], "_.res", "pong"]
 		],
 		"/1.0/:user/events": [
+			["util.handleOption", "_.req", "_.res"],
 			["@.evt.read", "_.:rows"],
 			[["util.branchByContentType", {
 				"text/calendar": "events/ical",
