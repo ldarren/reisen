@@ -13,11 +13,11 @@ module.exports = {
 	},
 
 	handleOption(req, res){
-		res.setHeader('Access-Control-Allow-Origin', 'https://reisen-ui-dev.onrender.com')
-		res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE, OPTIONS')
-		res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type')
-		res.setHeader('Access-Control-Max-Age', 86400)
 		if ('OPTIONS' === req.method){
+			res.setHeader('Access-Control-Allow-Origin', process.env.mod_web_allow_origin)
+			res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE, OPTIONS')
+			res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+			res.setHeader('Access-Control-Max-Age', 86400)
 			res.statusCode = 204
 			return res.end()
 		}
