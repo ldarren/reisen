@@ -1,6 +1,6 @@
 const ACCEPT = 'accept'
 const CORS_HEADERS = {
-	'Access-Control-Allow-Origin': 'https://reisen-ui-dev.onrender.com',
+	'Access-Control-Allow-Origin': process.env.mod_web_allow_origin,
 	'Access-Control-Allow-Methods': 'POST, GET, PUT, PATCH, DELETE, OPTIONS',
 	'Access-Control-Allow-Headers': 'Content-Type',
 	'Access-Control-Max-Age': 86400
@@ -8,12 +8,12 @@ const CORS_HEADERS = {
 
 module.exports = {
 	setup(host, cfg, rsc, paths){
+		console.log('###', JSON.stringify(CORS_HEADERS))
 		return this
 	},
 
 	handleOption(req, res){
-	console.log('###', JSON.stringify(req.headers))
-		res.setHeader('Access-Control-Allow-Origin', '*')
+		res.setHeader('Access-Control-Allow-Origin', 'https://reisen-ui-dev.onrender.com')
 		res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE, OPTIONS')
 		res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type')
 		res.setHeader('Access-Control-Max-Age', 86400)
