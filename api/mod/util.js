@@ -1,23 +1,19 @@
 const ACCEPT = 'accept'
-const CORS_HEADERS = {
-	'Access-Control-Allow-Origin': process.env.mod_web_allow_origin,
-	'Access-Control-Allow-Methods': 'POST, GET, PUT, PATCH, DELETE, OPTIONS',
-	'Access-Control-Allow-Headers': 'Content-Type',
-	'Access-Control-Max-Age': 86400
-}
+const ALLOW_ORIGIN = process.env.mod_web_ac_allow_origin
+const MAX_AGE = process.env.mod_web_ac_max_age
 
 module.exports = {
 	setup(host, cfg, rsc, paths){
-		console.log('###', JSON.stringify(CORS_HEADERS))
 		return this
 	},
 
 	handleOption(req, res){
+		if (!ALLOW_ORIGIN) return this.next()
+		res.setHeader('Access-Control-Allow-Origin', ALLOW_ORIGIN)
+		res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE, OPTIONS')
+		res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+		res.setHeader('Access-Control-Max-Age', MAX_AGE)
 		if ('OPTIONS' === req.method){
-			res.setHeader('Access-Control-Allow-Origin', process.env.mod_web_allow_origin)
-			res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE, OPTIONS')
-			res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type')
-			res.setHeader('Access-Control-Max-Age', 86400)
 			res.statusCode = 204
 			return res.end()
 		}
