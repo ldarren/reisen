@@ -12,9 +12,10 @@ module.exports = {
 	},
 
 	handleOption(req, res){
+	console.log('###', JSON.stringify(req.headers))
 		res.setHeader('Access-Control-Allow-Origin', '*')
 		res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE, OPTIONS')
-		res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type')
+		res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type')
 		res.setHeader('Access-Control-Max-Age', 86400)
 		if ('OPTIONS' === req.method){
 			res.statusCode = 204
