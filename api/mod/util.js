@@ -12,11 +12,13 @@ module.exports = {
 	},
 
 	handleOption(req, res){
+		res.setHeader('Access-Control-Allow-Origin', '*')
+		res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE, OPTIONS')
+		res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type')
+		res.setHeader('Access-Control-Max-Age', 86400)
 		if ('OPTIONS' === req.method){
-			res.writeHead(204, CORS_HEADERS)
-			res.end()
-	console.log(req.method)
-			return
+			res.statusCode = 204
+			return res.end()
 		}
 		return this.next()
 	},
