@@ -4,7 +4,8 @@
   "description": "reisen the better way to add events to your website",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build:prod": "cp ./rui.env.json cfg/ && pico-client-build --bundle rui --env prod"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,9 @@
   },
   "homepage": "https://github.com/ldarren/reisen#readme",
   "dependencies": {
-    "pico-args": "^1.0.14",
-    "pico-client": "^0.7.8"
+    "lean-wrap": "^0.3.*",
+    "pico-args": "^1.0.*",
+    "pico-client": "0.8.*",
+    "pico-common": "^0.15.*"
   }
 }

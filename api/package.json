@@ -1,6 +1,6 @@
 {
   "name": "reisen",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "iitinerary planner",
   "engines": {
     "node": ">=18"
@@ -19,9 +19,9 @@
   "dependencies": {
     "@planetscale/database": "^1.5.0",
     "ical-generator": "^3.6.1",
-    "pico-args": "^1.0.14",
-    "pico-common": "^0.15.1",
-    "picos": "^0.10.3",
-    "picos-util": "^0.2.7"
+    "pico-args": "^1.0.*",
+    "pico-common": "^0.15.*",
+    "picos": "^0.10.*",
+    "picos-util": "^0.2.*"
   }
 }
